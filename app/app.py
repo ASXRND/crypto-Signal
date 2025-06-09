@@ -4,6 +4,7 @@
 import time
 import sys
 import asyncio
+import re
 
 import logs
 import conf
@@ -13,6 +14,11 @@ from conf import Configuration
 from exchange import ExchangeInterface
 from notification import Notifier
 from behaviour import Behaviour
+
+
+def clean_message(msg):
+    """Удаляет множественные пробелы из строки"""
+    return re.sub(r'\s+', ' ', msg)
 
 
 async def main():
@@ -38,7 +44,7 @@ async def main():
     while True:
         settings['timeframe'] = '15m'  # Установка 15-минутного таймфрейма для всех монет
         await behaviour.run(settings['market_pairs'], settings['output_mode'])  # Добавлено await
-        logger.info("Sleeping for 120 seconds")
+        logger.info(clean_message("Sleeping    for   120   seconds"))
         await asyncio.sleep(120)  # Используем asyncio.sleep для асинхронного сна
 
 if __name__ == "__main__":
