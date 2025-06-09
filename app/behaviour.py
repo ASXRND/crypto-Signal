@@ -153,7 +153,11 @@ class Behaviour():
                         'hot_thresh': indicator_conf['hot'],
                         'cold_thresh': indicator_conf['cold']
                     }
-
+                    # --- Новый блок: параметры прогноза для RSI ---
+                    if indicator == 'rsi':
+                        analysis_args['forecast_lookahead'] = 1  # Можно сделать параметром
+                        analysis_args['forecast_history'] = 20
+                    # --- Конец нового блока ---
                     if 'period_count' in indicator_conf:
                         analysis_args['period_count'] = indicator_conf['period_count']
 

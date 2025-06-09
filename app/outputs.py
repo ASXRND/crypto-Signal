@@ -111,7 +111,13 @@ class Output():
                             else:
                                 formatted_values.append(str(value))
                         formatted_string = ' / '.join(formatted_values)
-                        output += f"  {colour_code}{indicator} #{i}: {formatted_string} {status}{normal_colour}\n"
+                        # --- Новый блок: добавление прогноза движения ---
+                        forecast = analysis['result'].iloc[-1].get('forecast_pct', None)
+                        if forecast is not None:
+                            output += f"  {colour_code}{indicator} #{i}: {formatted_string} {status}{normal_colour} (Ожидаемое движение: {forecast:+.2f}%)\n"
+                        else:
+                            output += f"  {colour_code}{indicator} #{i}: {formatted_string} {status}{normal_colour}\n"
+                        # --- Конец нового блока ---
                         if desc:
                             output += f"    → {desc}\n"
                         if status_explain:

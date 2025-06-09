@@ -273,10 +273,14 @@ class Notifier():
                             if indicator_type == 'indicators':
                                 for signal in analysis['config']['signal']:
                                     latest_result = analysis['result'].iloc[-1]
-
                                     values[signal] = analysis['result'].iloc[-1][signal]
                                     if isinstance(values[signal], float):
                                         values[signal] = format(values[signal], '.8f')
+                                # --- Новый блок: прогноз движения для RSI ---
+                                forecast = analysis['result'].iloc[-1].get('forecast_pct', None)
+                                if forecast is not None:
+                                    values['forecast_pct'] = f"{forecast:+.2f}%"
+                                # --- Конец блока ---
                             elif indicator_type == 'crossovers':
                                 latest_result = analysis['result'].iloc[-1]
 
