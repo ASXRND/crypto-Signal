@@ -1,0 +1,72 @@
+# Copy this file to config.yml to get started and then add your own configuration.
+# Full documentation here: https://github.com/CryptoSignal/crypto-signal/blob/master/docs/config.md
+
+settings:
+  update_interval: 300
+  output_mode: "standard"
+  market_pairs:
+    - BTC/USDT
+    - ETH/USDT
+    - SOL/USDT
+    - USDC/USDT
+    - BTC/USDC
+    - XRP/USDT
+    - MNT/USDT
+    - ETH/USDC
+    - HUMA/USDT
+    - USDE/USDT
+    - SUI/USDT
+    - PEPE/USDT
+    - SPX/USDT
+    - WIF/USDT
+    - VIRTUAL/USDT
+    - DOGE/USDT
+    - ME/USDT
+    - ADA/USDT
+    - ENA/USDT
+    - LA/USDT
+
+exchanges:
+  bittrex:
+    required:
+      enabled: true
+
+notifiers:
+  twilio:
+    required:
+      key: ""
+      secret: ""
+      sender_number: ""
+      receiver_number: ""
+    optional: {}
+  discord:
+    required:
+      webhook: ""
+      username: ""
+    optional:
+      avatar: ""
+  gmail:
+    required:
+      email: ""
+      password: ""
+      destination: ""
+    optional: {}
+  slack:
+    required:
+      token: ""
+      channel: ""
+    optional: {}
+  stdout:
+    required: {}
+    optional:
+      template: ""
+  webhook:
+    required:
+      url: ""
+    optional: {}
+
+indicators: {}
+
+informants: {}
+
+crossovers: {}
